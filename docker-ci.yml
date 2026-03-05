@@ -1,0 +1,20 @@
+name: ML CI Python
+on: [push]
+jobs:
+  build:
+  runs-on: ubuntu-latest
+  steps:
+  - name: Checkout code
+  - uses: actions/checkout@v2
+
+  - name: Install Python
+    uses: actions/setup-python@v4
+    with:
+      python-version: '3.11'
+  - name: Install dependencies
+    run: pip install -r requirements.txt
+
+  - name: Build Docker Image
+    run: docker build -t ml-devepos-demo
+  - name: Run Docker container
+    run: docker run ml-devops-demo
