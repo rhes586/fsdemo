@@ -14,7 +14,14 @@ jobs:
   - name: Install dependencies
     run: pip install -r requirements.txt
 
+  - name: Run Tests
+    run: pytest
+
   - name: Build Docker Image
     run: docker build -t ml-devepos-demo
   - name: Run Docker container
     run: docker run ml-devops-demo
+  
+  - name: Deplor Container
+    run: docker run ml-devops-demo
+
